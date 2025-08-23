@@ -195,7 +195,7 @@ class PersonalidadeIA:
         
     def atualizar_humor(self):
         self.interacoes += 1
-        self.nivel_energia = max(50, self.nivel_energy - 1)
+        self.nivel_energia = max(50, self.nivel_energia - 1)  # Corrigido: nivel_energia
         
         if self.interacoes % 5 == 0:
             humores = ["entusiasmado", "curioso", "animado", "focado", "inspirado"]
@@ -407,3 +407,4 @@ function playSound() {
 }
 </script>
 """, unsafe_allow_html=True)
+
