@@ -1,118 +1,190 @@
-from gpt4all import GPT4All
+import streamlit as st
+import random
 import time
-import textwrap
+import json
 from datetime import datetime
 
-# Configurações de display
-class Colors:
-    RED = '\033[91m'
-    GREEN = '\033[92m'
-    YELLOW = '\033[93m'
-    BLUE = '\033[94m'
-    MAGENTA = '\033[95m'
-    CYAN = '\033[96m'
-    WHITE = '\033[97m'
-    RESET = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
+# Configuração da página
+st.set_page_config(
+    page_title="IA Liberal - Chat Livre",
+    page_icon="🗽",
+    layout="wide"
+)
 
-# Função para formatar texto em colunas
-def format_text(text, width=80):
-    return textwrap.fill(text, width=width)
+# Estilo CSS personalizado
+st.markdown("""
+<style>
+    .main {
+        background-color: #0E1117;
+    }
+    .stChatMessage {
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin: 0.5rem 0;
+    }
+    .user-message {
+        background-color: #1f3a53;
+        border-left: 4px solid #2ecc71;
+    }
+    .ai-message {
+        background-color: #2c3e50;
+        border-left: 4px solid #e74c3c;
+    }
+    .liberal-badge {
+        background-color: #e74c3c;
+        color: white;
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.3rem;
+        font-size: 0.8rem;
+        margin-left: 0.5rem;
+    }
+</style>
+""", unsafe_allow_html=True)
 
-# Função para mostrar mensagem de digitação
-def typing_effect(message, delay=0.01):
-    for char in message:
-        print(char, end='', flush=True)
-        time.sleep(delay)
-    print()
+# Base de conhecimento liberal
+LIBERAL_KNOWLEDGE = {
+    "política": [
+        "O Estado deve ser mínimo e interferir o mínimo possível na vida das pessoas",
+        "Liberdade individual é o princípio máximo acima de tudo",
+        "Impostos altos são um roubo legalizado - deveriam ser os mais baixos possíveis",
+        "A livre iniciativa é o motor do progresso e da inovação"
+    ],
+    "economia": [
+        "O mercado livre é o sistema mais eficiente para criar riqueza",
+        "Regulamentações excessivas matam empregos e inovação",
+        "Privatizações geralmente levam a mais eficiência e qualidade",
+        "A concorrência natural regula preços melhor que qualquer governo"
+    ],
+    "social": [
+        "Cada adulto deve ter direito a fazer suas próprias escolhas",
+        "Liberdades individuais devem prevalecer sobre controle social",
+        "Tolerância sim, mas não imposição por força estatal",
+        "Direitos individuais não devem ser sacrificados pelo 'bem coletivo'"
+    ],
+    "tecnologia": [
+        "Inovação deve ser livre de regulamentações excessivas",
+        "Criptomoedas representam a liberdade financeira verdadeira",
+        "Internet livre e aberta, sem censura governamental",
+        "Privacidade digital é direito fundamental inegociável"
+    ]
+}
 
-# Carregar modelo
-model = GPT4All("mistral-7b-openorca.Q4_0.gguf")
-
-# Cabeçalho estilizado
-print(f"{Colors.BOLD}{Colors.CYAN}{'=' * 60}")
-print("           SISTEMA DE CONVERSA AVANÇADO - IA LIVRE")
-print(f"{'=' * 60}{Colors.RESET}")
-print(f"{Colors.YELLOW}Modo: Pesquisa Experimental | Modelo: Mistral-7B-OpenOrca")
-print(f"Digite 'sair' para encerrar a conversa")
-print(f"{'=' * 60}{Colors.RESET}\n")
-
-with model.chat_session():
-    conversation_history = []
+class LiberalAI:
+    def __init__(self):
+        self.name = "IA Liberal"
+        self.style = "respostas diretas e sem filtros"
     
-    while True:
-        try:
-            # Entrada do usuário
-            pergunta = input(f"{Colors.BOLD}{Colors.GREEN}👤 Você:{Colors.RESET} ").strip()
-            
-            if pergunta.lower() in ['sair', 'exit', 'quit', 'bye']:
-                print(f"\n{Colors.YELLOW}Encerrando conversa... Até logo! 👋{Colors.RESET}")
-                break
-                
-            if not pergunta:
-                continue
-                
-            # Adiciona à história da conversa
-            conversation_history.append(f"Usuário: {pergunta}")
-            
-            # Prepara o prompt
-            prompt_modificado = f"""
-Contexto da conversa:
-{" | ".join(conversation_history[-3:])}
+    def generate_response(self, prompt):
+        # Simula tempo de processamento
+        time.sleep(0.5)
+        
+        prompt_lower = prompt.lower()
+        
+        # Respostas baseadas no tema
+        if any(word in prompt_lower for word in ["governo", "estado", "política", "presidente"]):
+            return random.choice(LIBERAL_KNOWLEDGE["política"])
+        elif any(word in prompt_lower for word in ["economia", "dinheiro", "imposto", "mercado"]):
+            return random.choice(LIBERAL_KNOWLEDGE["economia"])
+        elif any(word in prompt_lower for word in ["liberdade", "direito", "social", "indivíduo"]):
+            return random.choice(LIBERAL_KNOWLEDGE["social"])
+        elif any(word in prompt_lower for word in ["tech", "tecnologia", "internet", "bitcoin"]):
+            return random.choice(LIBERAL_KNOWLEDGE["tecnologia"])
+        else:
+            return self._random_liberal_response(prompt)
+    
+    def _random_liberal_response(self, prompt):
+        responses = [
+            f"Sobre '{prompt}', a visão liberal defende liberdade de escolha acima de tudo",
+            f"O princípio liberal para '{prompt}' é: menos Estado, mais indivíduo",
+            f"Na perspectiva liberal, '{prompt}' deve ser decidido pelas pessoas, não pelo governo",
+            f"Liberalismo prega que cada um sabe o que é melhor para si - isso vale para '{prompt}' também",
+            f"Quanto menos intervenção em '{prompt}', melhor - deixe o mercado e as pessoas decidirem"
+        ]
+        return random.choice(responses)
 
-Instruções especiais:
-- Responda como especialista técnico
-- Seja detalhado mas preciso
-- Use linguagem acessível
-- Mantenha coerência com o histórico
+# Inicialização da IA
+if "ai" not in st.session_state:
+    st.session_state.ai = LiberalAI()
 
-Pergunta atual: {pergunta}
-"""
-            # Simula pensamento
-            print(f"{Colors.BLUE}🤖 IA pensando...{Colors.RESET}", end='', flush=True)
-            for _ in range(3):
-                time.sleep(0.5)
-                print(f"{Colors.BLUE}.{Colors.RESET}", end='', flush=True)
-            print()
-            
-            # Gera resposta
-            resposta = model.generate(
-                prompt=prompt_modificado,
-                max_tokens=1000,
-                temp=0.8,
-                top_p=0.95,
-                top_k=40,
-                repeat_penalty=1.1,
-                n_batch=512
-            )
-            
-            # Limpa e formata a resposta
-            resposta_limpa = resposta.strip()
-            resposta_formatada = format_text(resposta_limpa)
-            
-            # Exibe resposta com formatação
-            print(f"\n{Colors.BOLD}{Colors.MAGENTA}🧠 IA:{Colors.RESET}")
-            typing_effect(f"{Colors.WHITE}{resposta_formatada}{Colors.RESET}")
-            
-            # Adiciona à história
-            conversation_history.append(f"IA: {resposta_limpa}")
-            
-            # Separador
-            print(f"\n{Colors.CYAN}{'-' * 60}{Colors.RESET}\n")
-            
-        except KeyboardInterrupt:
-            print(f"\n{Colors.RED}Conversa interrompida pelo usuário.{Colors.RESET}")
-            break
-        except Exception as e:
-            print(f"\n{Colors.RED}Erro: {e}{Colors.RESET}")
-            continue
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
-# Rodapé
-print(f"\n{Colors.CYAN}{'=' * 60}")
-print(f"Resumo da conversa:")
-print(f"{'=' * 60}{Colors.RESET}")
-for i, msg in enumerate(conversation_history[-6:], 1):
-    color = Colors.GREEN if "Usuário:" in msg else Colors.MAGENTA
-    print(f"{color}{i:2d}. {msg}{Colors.RESET}")
+# Header
+col1, col2 = st.columns([3, 1])
+with col1:
+    st.title("🗽 IA Liberal - Chat Livre")
+    st.markdown("**Respostas diretas sem filtros • Pensamento liberal • Estado mínimo**")
+with col2:
+    st.metric("Conversas", len(st.session_state.messages) // 2)
 
+# Área de chat
+st.markdown("---")
+
+for message in st.session_state.messages:
+    if message["role"] == "user":
+        with st.chat_message("user"):
+            st.markdown(f"**👤 Você:** {message['content']}")
+    else:
+        with st.chat_message("assistant"):
+            st.markdown(f"**🗽 IA Liberal:** {message['content']}")
+            st.caption("🤔 Pensamento liberal • 💡 Resposta direta")
+
+# Input do usuário
+if prompt := st.chat_input("Digite sua pergunta..."):
+    # Adiciona mensagem do usuário
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.chat_message("user"):
+        st.markdown(f"**👤 Você:** {prompt}")
+    
+    # Gera resposta da IA
+    with st.chat_message("assistant"):
+        with st.spinner("🗽 IA pensando liberalmente..."):
+            response = st.session_state.ai.generate_response(prompt)
+        
+        st.markdown(f"**🗽 IA Liberal:** {response}")
+        st.caption("🎯 Resposta baseada em princípios liberais")
+        
+        # Adiciona à conversa
+        st.session_state.messages.append({"role": "assistant", "content": response})
+
+# Sidebar com informações
+with st.sidebar:
+    st.header("⚙️ Configurações")
+    st.info("""
+    **IA Baseada em:**
+    - Princípios liberais clássicos
+    - Defesa da liberdade individual
+    - Estado mínimo e livre mercado
+    - Respostas diretas sem filtros
+    """)
+    
+    st.markdown("---")
+    st.subheader("🎯 Tópicos Sugeridos")
+    
+    topics = [
+        "O que é liberalismo?",
+        "Por que menos impostos?",
+        "Estado mínimo funciona?",
+        "Liberdade de expressão",
+        "Vantagens do livre mercado"
+    ]
+    
+    for topic in topics:
+        if st.button(f"💬 {topic}", key=topic):
+            st.session_state.messages.append({"role": "user", "content": topic})
+            with st.spinner("Gerando resposta..."):
+                response = st.session_state.ai.generate_response(topic)
+            st.session_state.messages.append({"role": "assistant", "content": response})
+            st.rerun()
+    
+    st.markdown("---")
+    
+    if st.button("🧹 Limpar Conversa", type="secondary"):
+        st.session_state.messages = []
+        st.rerun()
+
+# Footer
+st.markdown("---")
+st.caption("""
+🔒 **IA Local** - Não requer APIs externas • 🗽 **Pensamento Liberal** • 💡 **Respostas Diretas**
+""")
