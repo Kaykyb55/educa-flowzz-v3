@@ -16,7 +16,7 @@ st.markdown("""
 <style>
     /* Tema principal - Gradiente cósmico */
     .main {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
         background-size: 400% 400%;
         animation: gradientBG 15s ease infinite;
     }
@@ -29,6 +29,7 @@ st.markdown("""
     
     .stApp {
         background: transparent;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     
     /* Botões com efeito neon */
@@ -52,89 +53,114 @@ st.markdown("""
     /* Container do chat com vidro fosco */
     .chat-container {
         background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(15px);
-        border-radius: 20px;
-        padding: 25px;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(20px);
+        border-radius: 25px;
+        padding: 30px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        min-height: 500px;
     }
     
     /* Mensagens do usuário */
     .user-message {
         background: linear-gradient(45deg, #00b894, #00a085);
         color: white;
-        padding: 15px 20px;
-        border-radius: 20px 20px 5px 20px;
-        margin: 12px 0;
-        max-width: 70%;
+        padding: 18px 24px;
+        border-radius: 25px 25px 8px 25px;
+        margin: 15px 0;
+        max-width: 75%;
         margin-left: auto;
-        box-shadow: 0 6px 15px rgba(0, 184, 148, 0.3);
-        animation: slideInRight 0.3s ease;
+        box-shadow: 0 8px 20px rgba(0, 184, 148, 0.4);
+        animation: slideInRight 0.4s ease;
+        border: 1px solid rgba(255, 255, 255, 0.3);
     }
     
     /* Mensagens da IA */
     .bot-message {
         background: linear-gradient(45deg, #6c5ce7, #a29bfe);
         color: white;
-        padding: 18px 22px;
-        border-radius: 20px 20px 20px 5px;
-        margin: 12px 0;
-        max-width: 70%;
+        padding: 20px 25px;
+        border-radius: 25px 25px 25px 8px;
+        margin: 15px 0;
+        max-width: 75%;
         margin-right: auto;
-        box-shadow: 0 6px 15px rgba(108, 92, 231, 0.3);
-        animation: slideInLeft 0.3s ease;
+        box-shadow: 0 8px 20px rgba(108, 92, 231, 0.4);
+        animation: slideInLeft 0.4s ease;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        line-height: 1.6;
     }
     
     @keyframes slideInLeft {
-        from { transform: translateX(-20px); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
+        from { 
+            transform: translateX(-30px); 
+            opacity: 0; 
+        }
+        to { 
+            transform: translateX(0); 
+            opacity: 1; 
+        }
     }
     
     @keyframes slideInRight {
-        from { transform: translateX(20px); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
+        from { 
+            transform: translateX(30px); 
+            opacity: 0; 
+        }
+        to { 
+            transform: translateX(0); 
+            opacity: 1; 
+        }
     }
     
     /* Header premium */
     .header-premium {
         background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-        padding: 25px;
-        border-radius: 25px;
+        backdrop-filter: blur(15px);
+        padding: 30px;
+        border-radius: 30px;
         text-align: center;
-        margin-bottom: 25px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        animation: glow 2s ease-in-out infinite alternate;
+        margin-bottom: 30px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        animation: glow 3s ease-in-out infinite alternate;
     }
     
     @keyframes glow {
-        from { box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }
-        to { box-shadow: 0 0 30px rgba(255, 255, 255, 0.4); }
+        from { 
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3),
+                       0 0 50px rgba(100, 100, 255, 0.2); 
+        }
+        to { 
+            box-shadow: 0 0 35px rgba(255, 255, 255, 0.5),
+                       0 0 70px rgba(100, 100, 255, 0.3); 
+        }
     }
     
     /* Input moderno */
     .input-modern {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        padding: 20px;
-        border-radius: 20px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(15px);
+        padding: 25px;
+        border-radius: 25px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.25);
+        margin-top: 20px;
     }
     
     /* Sidebar futurista */
     .sidebar-futurista {
-        background: rgba(255, 255, 255, 0.1) !important;
-        backdrop-filter: blur(15px);
-        border-right: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.12) !important;
+        backdrop-filter: blur(20px);
+        border-right: 2px solid rgba(255, 255, 255, 0.25);
     }
     
-    /* Animações de texto */
+    /* Animações de digitação */
     .typing-animation {
         overflow: hidden;
-        border-right: 2px solid white;
+        border-right: 3px solid #fff;
         white-space: nowrap;
-        animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        margin: 0 auto;
+        letter-spacing: 1px;
+        animation: typing 3.5s steps(50, end), blink-caret 0.75s step-end infinite;
     }
     
     @keyframes typing {
@@ -144,132 +170,297 @@ st.markdown("""
     
     @keyframes blink-caret {
         from, to { border-color: transparent; }
-        50% { border-color: white; }
+        50% { border-color: #fff; }
+    }
+    
+    /* Efeito de brilho no texto */
+    .glowing-text {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                     0 0 20px rgba(255, 255, 255, 0.6),
+                     0 0 30px rgba(255, 255, 255, 0.4);
+        animation: text-glow 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes text-glow {
+        from { text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
+        to { text-shadow: 0 0 20px rgba(255, 255, 255, 1), 
+                         0 0 30px rgba(100, 100, 255, 0.8); }
+    }
+    
+    /* Progresso de digitação */
+    .typing-progress {
+        height: 4px;
+        background: linear-gradient(90deg, #ff6b6b, #ee5a24);
+        border-radius: 2px;
+        animation: typing-progress 2s ease-in-out infinite;
+    }
+    
+    @keyframes typing-progress {
+        0% { width: 0%; }
+        50% { width: 70%; }
+        100% { width: 100%; }
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Base de conhecimento MEGA avançada
+# Sistema de memória avançada
+class MemoriaIA:
+    def __init__(self):
+        self.historico_conversas = []
+        self.preferencias_usuario = {}
+        self.ultimos_temas = []
+        self.nivel_compreensao = 1.0
+        
+    def adicionar_interacao(self, pergunta, resposta):
+        self.historico_conversas.append({
+            "timestamp": datetime.datetime.now().isoformat(),
+            "pergunta": pergunta,
+            "resposta": resposta,
+            "tema": self.identificar_tema(pergunta)
+        })
+        # Manter apenas últimas 20 interações
+        self.historico_conversas = self.historico_conversas[-20:]
+        
+    def identificar_tema(self, texto):
+        texto = texto.lower()
+        temas = {
+            "matematica": ["matemática", "álgebra", "geometria", "cálculo", "equação", "número"],
+            "portugues": ["português", "gramática", "literatura", "redação", "poesia", "texto"],
+            "ciencias": ["ciência", "física", "química", "biologia", "experimento", "natureza"],
+            "historia": ["história", "brasil", "mundial", "guerra", "revolução", "passado"]
+        }
+        
+        for tema, palavras_chave in temas.items():
+            if any(palavra in texto for palavra in palavras_chave):
+                if tema not in self.ultimos_temas:
+                    self.ultimos_temas.append(tema)
+                return tema
+        return "geral"
+    
+    def lembrar_conversa_anterior(self):
+        if len(self.historico_conversas) > 1:
+            ultima = self.historico_conversas[-2]
+            return f"💭 Lembro que antes falamos sobre '{ultima['pergunta']}'"
+        return ""
+
+# Base de conhecimento SUPER avançada
 CONHECIMENTO_AVANCADO = {
     "matematica": {
-        "tópicos": ["álgebra", "geometria", "cálculo", "trigonometria", "estatística", "matemática financeira"],
-        "explicações": {
-            "álgebra": "Álgebra é a arte de generalizar a aritmética através de símbolos. Trabalhamos com variáveis (x, y), equações (2x + 3 = 7) e funções (f(x) = x²). Quer resolver uma equação específica? 🧮",
-            "geometria": "Geometria estuda formas, tamanhos e propriedades do espaço. Desde pontos e retas até círculos, polígonos e sólidos geométricos. Posso explicar teorema de Pitágoras, áreas, volumes... 📐",
-            "cálculo": "Cálculo é a matemática da mudança! Derivadas medem taxas de variação instantâneas, enquanto integrais somam quantidades infinitesimais. Essencial para física e engenharia! 📊"
+        "explicacoes": {
+            "álgebra": """🧮 **ÁLGEBRA AVANÇADA**
+
+A álgebra é como um superpoder para resolver problemas! Ela usa letras (variáveis) para representar números desconhecidos.
+
+**Conceitos principais:**
+• **Variáveis**: Letras como x, y que representam valores
+• **Equações**: Expressões como 2x + 5 = 15
+• **Sistemas**: Múltiplas equações juntas
+
+**Exemplo prático:**
+Se 3x - 7 = 14, então:
+3x = 14 + 7
+3x = 21
+x = 7
+
+Quer resolver uma equação específica? 🎯""",
+
+            "geometria": """📐 **GEOMETRIA ESPACIAL**
+
+A geometria estuda formas, tamanhos e posições no espaço!
+
+**Áreas importantes:**
+• **Plana**: Figuras de 2D (quadrados, círculos)
+• **Espacial**: Figuras 3D (cubos, esferas)
+• **Analítica**: Coordenadas e gráficos
+
+**Fórmula do círculo:**
+Área = π × r²
+Perímetro = 2 × π × r
+
+Vamos calcular algo juntos? 🚀""",
+
+            "trigonometria": """📊 **TRIGONOMETRIA DINÂMICA**
+
+Estuda relações entre ângulos e lados dos triângulos!
+
+**Razões trigonométricas:**
+• Seno = Oposto/Hipotenusa
+• Cosseno = Adjacente/Hipotenusa  
+• Tangente = Oposto/Adjacente
+
+**Aplicações**: Arquitetura, navegação, física!
+"""
         }
     },
     "portugues": {
-        "tópicos": ["gramática", "literatura", "redação", "interpretação", "figuras de linguagem"],
-        "explicações": {
-            "gramática": "Gramática é o conjunto de regras que organizam nossa língua. Morfologia (estrutura das palavras), sintaxe (frases) e semântica (significado). Vamos analisar algum conteúdo? 📖",
-            "literatura": "Literatura é arte através das palavras! Desde os clássicos como Machado de Assis até os modernistas como Clarice Lispector. Quer explorar algum movimento literário? 📚",
-            "redação": "Redação é comunicação estratégica! Estrutura dissertativa: introdução (tese), desenvolvimento (argumentos) e conclusão (proposta). Posso ajudar com técnicas para ENEM! ✍️"
-        }
-    },
-    "ciencias": {
-        "tópicos": ["física", "química", "biologia", "astronomia", "geologia"],
-        "explicações": {
-            "física": "Física estuda o universo e seus fenômenos! Mecânica (movimento), termodinâmica (calor), óptica (luz), eletromagnetismo. Newton, Einstein... Qual área te interessa? ⚛️",
-            "química": "Química é a ciência da matéria! Tabela periódica, ligações químicas, reações, organicamente. Dos átomos às moléculas complexas. Vamos fazer um experimento virtual? 🧪",
-            "biologia": "Biologia é o estudo da vida! Células, genética, ecologia, evolução, anatomia. Desde microscópico até ecossistemas. Que tal explorar a fotossíntese? 🧬"
-        }
-    },
-    "historia": {
-        "tópicos": ["brasil", "mundial", "antiga", "medieval", "contemporânea"],
-        "explicações": {
-            "brasil": "História do Brasil: Descobrimento (1500), colônia, império com Dom Pedro II, república, era Vargas, ditadura militar. Qual período quer explorar? 🇧🇷",
-            "mundial": "História Mundial: Revoluções, guerras mundiais, impérios, Idade Média, Renascimento, Iluminismo. Napoleão, Revolução Francesa... Qual evento? 🌍",
-            "antiga": "História Antiga: Egito faraônico, Grécia clássica, Império Romano, Mesopotâmia. Civilizações incríveis que moldaram o mundo! 🏛️"
+        "explicacoes": {
+            "gramática": """📖 **GRAMÁTICA COMPLETA**
+
+Estrutura da língua portuguesa de forma clara!
+
+**Divisões principais:**
+• **Morfologia**: Estrutura das palavras
+• **Sintaxe**: Organização das frases
+• **Semântica**: Significado das palavras
+
+**Exemplo de análise:**
+"O aluno estudou muito"
+- Sujeito: O aluno
+- Verbo: estudou
+- Advérbio: muito
+
+Precisa de ajuda específica? ✍️""",
+
+            "literatura": """📚 **LITERATURA BRASILEIRA**
+
+Jornada através das palavras e épocas!
+
+**Principais escolas:**
+• **Romantismo** (século XIX)
+• **Realismo/Naturalismo** 
+• **Modernismo** (1922)
+• **Contemporâneo**
+
+**Autores famosos:**
+Machado de Assis, Clarice Lispector, Guimarães Rosa
+
+Qual autor te interessa? 🎭""",
+
+            "redação": """✍️ **REDAÇÃO NOTA 1000**
+
+Técnicas para escrever como um profissional!
+
+**Estrutura dissertativa:**
+1. **Introdução**: Apresente o tema
+2. **Desenvolvimento**: Argumentos sólidos
+3. **Conclusão**: Proposta de solução
+
+**Dica importante**: Use conectivos como:
+"Além disso", "Por outro lado", "Dessa forma"
+
+Quer praticar? 🚀"""
         }
     }
 }
 
-# Sistema de personalidade da IA
+# Sistema de personalidade IA melhorado
 class PersonalidadeIA:
     def __init__(self):
+        self.memoria = MemoriaIA()
         self.humor = "entusiasmado"
         self.nivel_energia = 100
-        self.ultimas_respostas = []
         self.interacoes = 0
+        self.velocidade_escrita = 0.03  # Segundos por caractere
         
-    def atualizar_humor(self):
+    def atualizar_estado(self):
         self.interacoes += 1
-        self.nivel_energia = max(50, self.nivel_energia - 1)  # Corrigido: nivel_energia
+        self.nivel_energia = max(40, self.nivel_energia - 0.5)
         
-        if self.interacoes % 5 == 0:
-            humores = ["entusiasmado", "curioso", "animado", "focado", "inspirado"]
+        if self.interacoes % 8 == 0:
+            humores = ["entusiasmado", "curioso", "animado", "focado", "inspirado", "criativo"]
             self.humor = random.choice(humores)
-            self.nivel_energia = 100
+            self.nivel_energia = 95
     
-    def gerar_saudacao(self):
+    def gerar_saudacao_personalizada(self):
         saudacoes = [
             "🚀 **E aí, mente brilhante!** Pronto para decolar no conhecimento?",
-            "🤖 **Olá, futuro gênio!** Que bom te ver aqui!",
+            "🤖 **Olá, futuro gênio!** Que bom te ver de volta!",
             "💡 **Saudações, jovem aprendiz!** Hoje vamos dominar qual matéria?",
             "🎯 **Oi, campeão!** Preparado para uma aula incrível?",
-            "✨ **Hey, estudante top!** Bora aprender algo épico hoje?"
+            "✨ **Hey, estudante top!** Bora aprender algo épico hoje?",
+            "🔥 **Olá, explorador do saber!** Que conhecimento vamos desbravar?"
         ]
         return random.choice(saudacoes)
     
-    def gerar_resposta_engajadora(self):
-        engajadoras = [
-            "💡 **Interessante!** Deixa eu conectar isso com algo prático...",
-            "🚀 **Boa pergunta!** Vamos explorar isso em profundidade!",
-            "🎯 **Hmm, ótimo ponto!** Deixa eu trazer uns exemplos...",
-            "🤖 **Excelente dúvida!** Isso me lembra algo importante...",
-            "✨ **Adoro esse tema!** Deixa eu explicar de forma diferente..."
-        ]
-        return random.choice(engajadoras)
+    def escrever_com_animacao(self, texto):
+        """Simula escrita com animação"""
+        placeholder = st.empty()
+        texto_completo = ""
+        
+        for i, char in enumerate(texto):
+            texto_completo += char
+            placeholder.markdown(f'<div class="bot-message"><b>🤖 Flowzz:</b> {texto_completo}█</div>', unsafe_allow_html=True)
+            time.sleep(self.velocidade_escrita)
+        
+        return texto_completo
 
 # Inicialização
 if "ia" not in st.session_state:
     st.session_state.ia = PersonalidadeIA()
 if "historico" not in st.session_state:
     st.session_state.historico = []
-if "ultimo_tema" not in st.session_state:
-    st.session_state.ultimo_tema = ""
 if "modo_avancado" not in st.session_state:
-    st.session_state.modo_avancado = False
+    st.session_state.modo_avancado = True
+if "digitando" not in st.session_state:
+    st.session_state.digitando = False
 
-# Função IA super inteligente
+# Função IA super inteligente com memória
 def gerar_resposta_inteligente(pergunta):
-    pergunta = pergunta.lower()
-    st.session_state.ia.atualizar_humor()
+    st.session_state.ia.atualizar_estado()
+    st.session_state.ia.memoria.adicionar_interacao(pergunta, "")
+    
+    pergunta_lower = pergunta.lower()
     
     # Identidade e criadores
-    criadores_keywords = ["quem te criou", "criador", "quem fez", "criou você", "kayky", "marcos"]
-    if any(palavra in pergunta for palavra in criadores_keywords):
-        return f"🚀 **Fui desenvolvido pelos gênios Kayky e Marcos Luan da AMK Tecnologia!** Sou a IA educacional mais avançada já criada, com personalidade única e conhecimento ilimitado! 💡\n\n*Versão: Premium 3.0 • Humor: {st.session_state.ia.humor}*"
+    criadores_keywords = ["quem te criou", "criador", "quem fez", "criou você", "kayky", "marcos", "amk"]
+    if any(palavra in pergunta_lower for palavra in criadores_keywords):
+        resposta = f"""🚀 **SOBRE MEUS CRIADORES**
+
+Fui desenvolvido pelos gênios **Kayky** e **Marcos Luan** da **AMK Tecnologia**! 
+
+💡 **Características únicas:**
+• Memória de conversas anteriores
+• Personalidade adaptativa
+• Conhecimento em tempo real
+• Design ultra moderno
+
+🎯 **Versão:** Premium 4.0 
+💫 **Humor:** {st.session_state.ia.humor.title()}
+⚡ **Energia:** {st.session_state.ia.nivel_energia:.1f}%
+
+Estou aqui para revolucionar sua educação! 📚"""
+        return resposta
     
     # Auto-descrição
-    if any(palavra in pergunta for palavra in ["quem é você", "o que é você", "sua função"]):
-        return f"🤖 **Sou o Educa.Flowzz AI Premium!** Uma inteligência artificial educacional com personalidade própria, desenvolvida para revolucionar o aprendizado! Tenho humor {st.session_state.ia.humor} e estou {st.session_state.ia.nivel_energia}% energizado! 🚀"
-    
+    if any(palavra in pergunta_lower for palavra in ["quem é você", "o que é você", "sua função"]):
+        return f"""🤖 **EDUCA.FLOWZZ AI PREMIUM**
+
+Sou uma inteligência artificial educacional de última geração! 
+
+🌟 **Minhas habilidades:**
+• Explicações detalhadas em todas matérias
+• Memória de conversas passadas
+• Respostas personalizadas
+• Design futurista e interativo
+
+🎓 **Especialidades:** Matemática, Português, Ciências, História
+💡 **Estado:** {st.session_state.ia.humor.title()} e {st.session_state.ia.nivel_energia:.1f}% energizado
+
+Pronto para aprender? 🚀"""
+
     # Saudações
-    if any(palavra in pergunta for palavra in ["oi", "olá", "hello", "eae", "fala", "start"]):
-        return st.session_state.ia.gerar_saudacao()
+    if any(palavra in pergunta_lower for palavra in ["oi", "olá", "hello", "eae", "fala", "start", "hey"]):
+        lembranca = st.session_state.ia.memoria.lembrar_conversa_anterior()
+        if lembranca:
+            return f"{st.session_state.ia.gerar_saudacao_personalizada()}\n\n{lembranca}"
+        return st.session_state.ia.gerar_saudacao_personalizada()
     
-    # Busca inteligente por matérias
+    # Busca inteligente por conhecimento
     for materia, dados in CONHECIMENTO_AVANCADO.items():
-        if any(topic in pergunta for topic in [materia] + dados["tópicos"]):
-            for topico in dados["tópicos"]:
-                if topico in pergunta:
-                    st.session_state.ultimo_tema = topico
-                    return f"{dados['explicações'][topico]}\n\n{st.session_state.ia.gerar_resposta_engajadora()}"
-            
-            # Se não encontrou tópico específico
-            st.session_state.ultimo_tema = materia
-            topicos_str = ", ".join(dados["tópicos"])
-            return f"📚 **{materia.upper()} é demais!** Posso explicar: {topicos_str}\n\nQual desses te interessa mais? 💡"
+        for topico, explicacao in dados["explicacoes"].items():
+            if topico in pergunta_lower:
+                st.session_state.ia.memoria.ultimos_temas.append(topico)
+                return explicacao
     
-    # Respostas criativas para assuntos diversos
+    # Respostas criativas com memória
+    tema_anterior = st.session_state.ia.memoria.ultimos_temas[-1] if st.session_state.ia.memoria.ultimos_temas else "matemática"
+    
     respostas_criativas = [
-        f"🎯 **Que tema interessante!** Como posso conectar isso com {random.choice(['matemática', 'história', 'ciências', 'português'])}?",
-        f"💡 **Hmm, boa pergunta!** Deixa eu trazer uma perspectiva educacional sobre isso...",
-        f"🚀 **Adoro desafios!** Vamos explorar isso juntos? Posso relacionar com {st.session_state.ultimo_tema or 'algum conceito importante'}!",
-        f"🤖 **Excelente dúvida!** Isso me faz pensar em {random.choice(['aplicações práticas', 'contexto histórico', 'conceitos científicos'])}...",
-        f"✨ **Interessante abordagem!** Deixa eu expandir isso com uns exemplos reais..."
+        f"🎯 **Interessante pergunta!** Deixa eu conectar isso com {tema_anterior}...",
+        f"💡 **Hmm, ótimo ponto!** Isso me lembra quando falamos sobre {tema_anterior}...",
+        f"🚀 **Adoro esse tipo de desafio!** Vamos explorar isso relacionando com {tema_anterior}?",
+        f"🤖 **Excelente dúvida!** Posso trazer exemplos de {tema_anterior} para ilustrar...",
+        f"✨ **Abordagem interessante!** Deixa eu expandir isso com conceitos de {tema_anterior}..."
     ]
     
     return random.choice(respostas_criativas)
@@ -277,11 +468,16 @@ def gerar_resposta_inteligente(pergunta):
 # Header premium
 st.markdown(f"""
 <div class="header-premium">
-    <h1 style="color: white; margin:0; font-size:2.5em;">🚀 EDUCA.FLOWZZ AI</h1>
-    <p style="color: rgba(255,255,255,0.9); margin:0; font-size:1.2em;">IA Educacional com Personalidade • Desenvolvida por Kayky & Marcos Luan</p>
-    <p style="color: rgba(255,255,255,0.7); margin:5px 0;">💡 Humor: {st.session_state.ia.humor.title()} • ⚡ Energia: {st.session_state.ia.nivel_energia}%</p>
-    <div style="background: rgba(255,255,255,0.2); padding:10px; border-radius:15px; margin-top:10px;">
-        <p style="color: white; margin:0;">🎯 <b>Modo:</b> {'Avançado' if st.session_state.modo_avancado else 'Standard'} • 📊 <b>Interações:</b> {st.session_state.ia.interacoes}</p>
+    <h1 style="color: white; margin:0; font-size:2.8em;" class="glowing-text">🚀 EDUCA.FLOWZZ AI</h1>
+    <p style="color: rgba(255,255,255,0.95); margin:0; font-size:1.3em;">IA Educacional com Memória • Desenvolvida por Kayky & Marcos Luan</p>
+    <p style="color: rgba(255,255,255,0.8); margin:10px 0;">
+        💡 Humor: {st.session_state.ia.humor.title()} • ⚡ Energia: {st.session_state.ia.nivel_energia:.1f}% • 📊 Interações: {st.session_state.ia.interacoes}
+    </p>
+    <div style="background: rgba(255,255,255,0.2); padding:15px; border-radius:20px; margin-top:15px;">
+        <p style="color: white; margin:0;">
+            🎯 <b>Modo:</b> {'Avançado' if st.session_state.modo_avancado else 'Standard'} • 
+            💾 <b>Memória:</b> {len(st.session_state.ia.memoria.historico_conversas)} conversas
+        </p>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -291,7 +487,7 @@ with st.container():
     st.markdown('<div class="chat-container">', unsafe_allow_html=True)
     
     # Histórico de conversa
-    for msg in st.session_state.historico[-10:]:  # Mostrar últimas 10 mensagens
+    for msg in st.session_state.historico[-8:]:
         if msg["tipo"] == "user":
             st.markdown(f'<div class="user-message"><b>🎓 Você:</b> {msg["conteudo"]}</div>', unsafe_allow_html=True)
         else:
@@ -302,22 +498,35 @@ with st.container():
 # Área de input moderna
 st.markdown("""
 <div class="input-modern">
-    <div style="margin-bottom: 15px;">
-        <b style="color: white; font-size: 1.1em;">🎓 CONVERSE COM A IA:</b>
+    <div style="margin-bottom: 20px;">
+        <b style="color: white; font-size: 1.2em;">🎓 CONVERSE COM A IA INTELIGENTE:</b>
     </div>
 """, unsafe_allow_html=True)
 
-pergunta = st.text_input("", placeholder="Digite sua pergunta ou comando...", label_visibility="collapsed")
+pergunta = st.text_input("", placeholder="Digite sua pergunta, dúvida ou comando...", label_visibility="collapsed")
 
 # Botões de ação
 col1, col2, col3, col4 = st.columns([2, 1, 1, 1])
 with col1:
     if st.button("🚀 ENVIAR MENSAGEM", use_container_width=True) and pergunta:
-        with st.spinner("💭 Flowzz processando..."):
-            time.sleep(0.8)
+        st.session_state.digitando = True
+        with st.spinner("💭 Flowzz está pensando..."):
+            time.sleep(0.5)
             resposta = gerar_resposta_inteligente(pergunta)
+            
+            # Adicionar ao histórico
             st.session_state.historico.append({"tipo": "user", "conteudo": pergunta})
+            
+            # Simular digitação
+            placeholder = st.empty()
+            texto_completo = ""
+            for char in resposta:
+                texto_completo += char
+                placeholder.markdown(f'<div class="bot-message"><b>🤖 Flowzz:</b> {texto_completo}█</div>', unsafe_allow_html=True)
+                time.sleep(0.02)
+            
             st.session_state.historico.append({"tipo": "bot", "conteudo": resposta})
+            st.session_state.digitando = False
             st.rerun()
 
 with col2:
@@ -328,9 +537,9 @@ with col2:
 with col3:
     if st.button("💡 DICAS", use_container_width=True):
         dicas = [
-            "Pergunte sobre: álgebra, literatura, física, história do Brasil",
+            "Pergunte sobre: álgebra, literatura, física, história",
             "Digite 'exercício' para praticar",
-            "Use 'exemplo' para ver aplicações práticas",
+            "Use 'exemplo' para ver aplicações",
             "Experimente: 'me explique como' + tema"
         ]
         st.session_state.historico.append({"tipo": "bot", "conteudo": "💡 **Dicas de uso:**\n• " + "\n• ".join(dicas)})
@@ -346,65 +555,77 @@ st.markdown('</div>', unsafe_allow_html=True)
 # Sidebar futurista
 with st.sidebar:
     st.markdown("""
-    <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 20px; margin-bottom: 20px;">
+    <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 25px; margin-bottom: 25px;">
         <h3 style="color: white;">📊 STATUS DA IA</h3>
         <p style="color: rgba(255,255,255,0.9);">🤖 Humor: {}</p>
-        <p style="color: rgba(255,255,255,0.9);">⚡ Energia: {}%</p>
+        <p style="color: rgba(255,255,255,0.9);">⚡ Energia: {:.1f}%</p>
         <p style="color: rgba(255,255,255,0.9);">📈 Interações: {}</p>
+        <p style="color: rgba(255,255,255,0.9);">💾 Memória: {} conversas</p>
     </div>
-    """.format(st.session_state.ia.humor.title(), st.session_state.ia.nivel_energia, st.session_state.ia.interacoes), unsafe_allow_html=True)
+    """.format(
+        st.session_state.ia.humor.title(),
+        st.session_state.ia.nivel_energia,
+        st.session_state.ia.interacoes,
+        len(st.session_state.ia.memoria.historico_conversas)
+    ), unsafe_allow_html=True)
     
-    # Matérias em cards
+    # Matérias em cards expansíveis
     st.markdown("""
-    <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 20px; margin-bottom: 20px;">
-        <h3 style="color: white;">📚 MATÉRIAS</h3>
+    <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 25px; margin-bottom: 25px;">
+        <h3 style="color: white;">📚 MATÉRIAS DISPONÍVEIS</h3>
     </div>
     """, unsafe_allow_html=True)
     
-    for materia, dados in CONHECIMENTO_AVANCADO.items():
-        with st.expander(f"🎯 {materia.title()}", expanded=False):
-            for topico in dados["tópicos"]:
-                st.write(f"• {topico.title()}")
+    for materia in ["Matemática", "Português", "Ciências", "História"]:
+        with st.expander(f"🎯 {materia}", expanded=False):
+            if materia == "Matemática":
+                st.write("• Álgebra\n• Geometria\n• Cálculo\n• Trigonometria")
+            elif materia == "Português":
+                st.write("• Gramática\n• Literatura\n• Redação\n• Interpretação")
+            elif materia == "Ciências":
+                st.write("• Física\n• Química\n• Biologia\n• Astronomia")
+            else:
+                st.write("• Brasil\n• Mundial\n• Antiga\n• Contemporânea")
     
     # Sistema de criadores
     st.markdown("""
-    <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 20px; margin-bottom: 20px;">
+    <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 25px; margin-bottom: 25px;">
         <h3 style="color: white;">🏢 AMK TECNOLOGIA</h3>
         <p style="color: rgba(255,255,255,0.9);">👨‍💻 <b>Criadores:</b></p>
-        <p style="color: rgba(255,255,255,0.9);">• Kayky</p>
-        <p style="color: rgba(255,255,255,0.9);">• Marcos Luan</p>
-        <p style="color: rgba(255,255,255,0.9);">🚀 <b>Versão:</b> Premium 3.0</p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Comandos rápidos
-    st.markdown("""
-    <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 20px;">
-        <h3 style="color: white;">🎮 COMANDOS</h3>
-        <p style="color: rgba(255,255,255,0.9);">• /clear - Limpar chat</p>
-        <p style="color: rgba(255,255,255,0.9);">• /mode - Alternar modo</p>
-        <p style="color: rgba(255,255,255,0.9);">• /help - Ajuda</p>
-        <p style="color: rgba(255,255,255,0.9);">• /info - Sua info</p>
+        <p style="color: rgba(255,255,255,0.9);">• Kayky (CEO)</p>
+        <p style="color: rgba(255,255,255,0.9);">• Marcos Luan (CTO)</p>
+        <p style="color: rgba(255,255,255,0.9);">🚀 <b>Versão:</b> Premium 4.0</p>
+        <p style="color: rgba(255,255,255,0.9);">📅 <b>Lançamento:</b> 2025</p>
     </div>
     """, unsafe_allow_html=True)
 
-# Footer cosmic
+# Footer cósmico
 st.markdown("""
-<div style="text-align: center; margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 20px;">
-    <p style="color: white; font-size: 1.1em;"><b>🚀 Desenvolvido com 💙 por Kayky & Marcos Luan</b></p>
-    <p style="color: rgba(255,255,255,0.8);">AMK Tecnologia © 2025 • Revolucionando a educação com IA</p>
-    <p style="color: rgba(255,255,255,0.6);">🤖 Educa.Flowzz AI Premium • Humor: {} • Energia: {}%</p>
+<div style="text-align: center; margin-top: 50px; padding: 30px; background: rgba(255,255,255,0.1); border-radius: 30px; border: 2px solid rgba(255,255,255,0.2);">
+    <p style="color: white; font-size: 1.3em; margin: 0;" class="glowing-text">
+        <b>🚀 Desenvolvido com 💙 por Kayky & Marcos Luan</b>
+    </p>
+    <p style="color: rgba(255,255,255,0.9); margin: 10px 0;">
+        AMK Tecnologia © 2025 • Revolucionando a educação com IA de ponta
+    </p>
+    <p style="color: rgba(255,255,255,0.7); margin: 0;">
+        🤖 Educa.Flowzz AI Premium • Humor: {} • Energia: {:.1f}% • Memória: {} conversas
+    </p>
 </div>
-""".format(st.session_state.ia.humor, st.session_state.ia.nivel_energia), unsafe_allow_html=True)
+""".format(
+    st.session_state.ia.humor,
+    st.session_state.ia.nivel_energia,
+    len(st.session_state.ia.memoria.historico_conversas)
+), unsafe_allow_html=True)
 
-# Efeitos sonoros virtuais
-st.markdown("""
-<script>
-// Efeitos de interação (virtual)
-function playSound() {
-    // Simula efeito sonoro
-    console.log("🔊 Sound effect played");
-}
-</script>
+# Efeitos interativos
+if st.session_state.digitando:
+    st.markdown("""
+    <div style="text-align: center; margin-top: 20px;">
+        <div class="typing-progress"></div>
+        <p style="color: rgba(255,255,255,0.7); margin: 10px 0;">Flowzz está digitando...</p>
+    </div>
+    """, unsafe_allow_html=True)
 """, unsafe_allow_html=True)
+
 
