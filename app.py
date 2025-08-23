@@ -626,6 +626,6 @@ if st.session_state.digitando:
         <p style="color: rgba(255,255,255,0.7); margin: 10px 0;">Flowzz está digitando...</p>
     </div>
     """, unsafe_allow_html=True)
-""", unsafe_allow_html=True)
+
 
 
